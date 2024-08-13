@@ -1,0 +1,26 @@
+# Ignore tfstate files
+*.tfstate
+*.tfstate.*
+
+# Ignore crash log files
+crash.log
+
+# Ignore override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore plan output
+*.tfplan
+
+# Ignore tfvars files
+*.tfvars
+*.tfvars.json
+
+# Ignore service account key files
+*keys.json
+*key.json
+
+# Ignore .terraform directory
+.terraform/
