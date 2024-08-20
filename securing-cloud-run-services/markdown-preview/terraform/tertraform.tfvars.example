@@ -1,0 +1,6 @@
+gcp_credentials = "/path/to/your/gcp_credentials.json"
+gcp_project_id  = "your-project-id"
+gcp_region      = "us-west2"
+gcp_project_id  = 123456789012
+gcp_label_owner = "firstname-lastname"
+gcp_lable_team  = "cloudops"

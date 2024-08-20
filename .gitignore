@@ -24,3 +24,6 @@ override.tf.json
 
 # Ignore .terraform directory
 .terraform/
+
+# IDE artifacts
+*.swp
