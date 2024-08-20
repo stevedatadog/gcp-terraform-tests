@@ -8,12 +8,14 @@ resource "google_cloud_run_v2_service" "renderer" {
   provider = google-beta
   name     = "renderer"
   location = var.gcp_region
+
   template {
     containers {
       image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/markdown-preview/renderer:latest"
     }
     service_account = google_service_account.renderer.email
   }
+
   labels = {
     owner = var.gcp_label_owner
     team  = var.gcp_label_team
@@ -38,6 +40,7 @@ resource "google_cloud_run_v2_service" "editor" {
   provider = google-beta
   name     = "editor"
   location = var.gcp_region
+
   template {
     containers {
       image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/markdown-preview/editor:latest"
@@ -46,11 +49,12 @@ resource "google_cloud_run_v2_service" "editor" {
       # service's URL as an environment variable.
       env {
         name  = "EDITOR_UPSTREAM_RENDER_URL"
-        value = google_cloud_run_v2_service.editor.uri
+        value = google_cloud_run_v2_service.renderer.uri
       }
     }
     service_account = google_service_account.editor.email
   }
+
   labels = {
     owner = var.gcp_label_owner
     team  = var.gcp_label_team
@@ -76,3 +80,4 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 
   policy_data = data.google_iam_policy.noauth.policy_data
 }
+

@@ -1,4 +1,4 @@
-provider "google" {
+provider "google-beta" {
   credentials = file(var.gcp_credentials)
   project     = var.gcp_project_id
   region      = var.gcp_region
@@ -6,8 +6,8 @@ provider "google" {
 
 terraform {
   required_providers {
-    google = {
-      source  = "hashicorp/google"
+    google-beta = {
+      source  = "hashicorp/google-beta"
       version = "~> 5.0" # Choose a specific version or range
     }
   }
